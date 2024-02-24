@@ -1,0 +1,13 @@
+#navbar{
+text-decoration-color: black;
+}
+
+#navbar .navlink {
+    font-size: 25px; 
+    transition: font-size 0.3s ease; 
+  }
+
+  #navbar .navlink:hover {
+    font-size: 30px; /* Larger font size when hovered */
+  }
+  
