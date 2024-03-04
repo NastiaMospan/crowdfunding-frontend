@@ -4,14 +4,27 @@ import "./NavBar.css";
 function NavBar() {
     return(
         <div >
-         <nav id="navbar">
-        <ul>
-         <li className="navlink"><Link to="/">Home</Link></li>
-         <li className="navlink"><Link to="/login">Log In</Link></li>
-         <li className="navlink"><Link to="/signup">Sign Up</Link></li>
+
+      <div id="navlogo">
+         
+<a>
+<Link className="navlink" to="/">
+    <img id="imagelogo"src="data:image/png;base64,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" alt="" />
+</Link>
+</a> 
+   <p id="logo">Gimme_money</p> 
+         <nav >
+        <ul id="navbar">
+         <a ><Link className="navlink" to="/">Home</Link></a>
+         <a ><Link className="navlink" to="/login">Log In</Link></a>
+         <a ><Link className="navlink" to="/signup">Sign Up</Link></a>
+         <a ><Link className="navlink" to="/newproject"> Create new project </Link> </a>
            
          </ul>
          </nav>
+
+          
+       </div>
          <Outlet />
         
         </div>

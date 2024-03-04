@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Forms.css";
+
+import postSignup from "../api/sign-up.js";
 
 function SignupForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -10,45 +15,37 @@ function SignupForm() {
   const [successMessage, setSuccessMessage] = useState(null);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { id, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [id]: value,
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch(
-        "https://crowdfunding-backend-1.fly.dev/users/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData)
+    if (formData.username && formData.password && formData.email) {
+        postSignup(
+            formData.username,
+            formData.password,
+            formData.email
+            ).then((response) => {
+              console.log(response)
+                navigate("/");
+            });
         }
-      );
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.message || "Signup failed");
-      }
-      setSuccessMessage("Signup successful! You can now login.");
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+    };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form >
         <div>
           <label htmlFor="username">Create your username:</label>
           <input
             type="text"
             id="username"
-            value={formData.username}
+            
             onChange={handleChange}
             placeholder="Enter username"
           />
@@ -59,7 +56,7 @@ function SignupForm() {
           <input
             type="password"
             id="password"
-            value={formData.password}
+            
             onChange={handleChange}
             placeholder="Password"
           />
@@ -70,13 +67,13 @@ function SignupForm() {
           <input
             type="email"
             id="email"
-            value={formData.email}
+           
             onChange={handleChange}
             placeholder="Email"
           />
         </div>
 
-        <button type="submit">Sign up</button>
+        <button className="login-button"  type="submit" onClick={handleSubmit}>Sign up</button>
       </form>
 
       {error && <div>Error: {error}</div>}

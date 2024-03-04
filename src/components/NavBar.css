@@ -1,13 +1,36 @@
 #navbar{
 text-decoration-color: black;
+display: flex;
+flex-direction: row;
+justify-content:right;
+margin-bottom: 30px;
+margin-right:100px ;
+
 }
 
 #navbar .navlink {
     font-size: 25px; 
     transition: font-size 0.3s ease; 
+    padding-left: 40px;
+    padding-right: 40px;
+    color: black;
   }
 
   #navbar .navlink:hover {
     font-size: 30px; /* Larger font size when hovered */
+    color: #c5ac73;
+    
   }
   
+
+  #imagelogo{
+    display: flex;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+    margin-left: 50px;
+  }
+  #logo{
+    font-size:  30px;
+    color: #738cc5;
+  }

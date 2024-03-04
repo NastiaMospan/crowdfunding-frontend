@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import postLogin from "../api/post-login.js";
-import {useState} from "react"
-
+import {useState} from "react";
+import "./Forms.css";
+import {Link, } from "react-router-dom";
 
 
 function LoginForm() {
@@ -34,6 +35,7 @@ function LoginForm() {
         };
 
     return (
+        <>
        <form>
          <div>
            <label htmlFor="username">Username:</label>
@@ -55,14 +57,23 @@ function LoginForm() {
           />
          </div>
 
-         <button type="submit" onClick={handleSubmit}>
+         <button className="login-button" type="submit" onClick={handleSubmit}>
          Login
          </button>
 
         </form>
+
+<p>Dont have an account? Create one 
+<a>
+<Link className="navlink" to="/signup"> here </Link>
+</a>
+</p>
+</>
     );
 
 }
+
+
 
 export default LoginForm;
 

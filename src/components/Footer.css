@@ -1,0 +1,33 @@
+#footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; /* Vertically center content */
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+#footer-social {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; /* Align to the end */
+}
+
+#footer-social .footlink {
+    font-size: 25px;
+    transition: font-size 0.3s ease;
+    padding: 0 20px; /* Adjust padding */
+    color: black; /* Set text color */
+}
+
+#footer-social .footlink:hover {
+    font-size: 30px;
+    color: #c5ac73;
+}
+
+#footer-content {
+    display: flex;
+    justify-content: flex-start; /* Align to the start */
+    font-size: 15px;
+    color: #738cc5;
+}
